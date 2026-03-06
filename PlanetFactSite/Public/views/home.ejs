@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+    <div class="container">
+        <div class="top-content">
+            <div class="image-box">
+                <img src="<%= section === 'overview'
+        ? planet.images.planet
+        : section === 'structure'
+        ? planet.images.internal
+        : planet.images.geology
+      %>" alt="<%= planet.name %>">
+            </div>
+            <div class="content-box">
+                <div class="content">
+                    <h1>
+                        <%= planet.name.toUpperCase() %>
+                    </h1>
+
+                    <p>
+                        <%= planet[section].content %>
+                    </p>
+
+                    <p>
+                        <span>Source</span> :
+                        <a href="<%= planet[section].source %>" target="_blank">
+                            Wikipedia
+                        </a>
+                    </p>
+                </div>
+                <div class="buttons">
+                    <a href="?section=overview">
+                        <button id="overview" class="<%= section === 'overview' ? 'active' : '' %>">
+                            <span>01 </span>OVERVIEW
+                        </button>
+                    </a>
+
+                    <a href="?section=structure">
+                        <button id="internal" class="<%= section === 'structure' ? 'active' : '' %>">
+                            <span>02 </span>INTERNAL STRUCTURE
+                        </button>
+                    </a>
+
+                    <a href="?section=geology">
+                        <button id="surface" class="<%= section === 'geology' ? 'active' : '' %>">
+                            <span>03 </span>SURFACE GEOLOGY
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-content">
+            <div class="box">
+                <span>Rotation Time</span>
+                <h1>
+                    <%= planet.rotation %>
+                </h1>
+            </div>
+
+            <div class="box">
+                <span>Revolution Time</span>
+                <h1>
+                    <%= planet.revolution %>
+                </h1>
+            </div>
+
+            <div class="box">
+                <span>Radius</span>
+                <h1>
+                    <%= planet.radius %>
+                </h1>
+            </div>
+
+            <div class="box">
+                <span>Average Temp.</span>
+                <h1>
+                    <%= planet.temperature %>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer') %>
